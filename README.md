@@ -52,7 +52,7 @@ To use this code, clone this github repository in your working directory (whatev
 git clone https://github.com/mikemartinez99/Ifetroban/
 ```
 
-After successful repo cloning, you should have a folder called `code`, `data` and a 'README.txt` file (of which you're reading)
+After successful repo cloning, you should have a folder called `code`, `data` and a 'README.md` file (of which you're reading)
 
 
 # Files
