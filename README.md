@@ -53,22 +53,21 @@ git clone https://github.com/mikemartinez99/Ifetroban
 ```
 
 Your directory structure should now be as follows:
-```bash
-Working_Dir
-    | -- Ifetroban
-    | -- | -- Code
-    | -- | -- | -- GSEA_Barcode_Enrichment_Plots.R
-    | -- | -- Data
-    | -- | -- | -- TIfetroban_vs_TControl_gseGO.rds
-    | -- | -- | -- TIfetroban_vs_TControl_gseKEGG.rds
-    | -- | -- | -- Ifetroban_vs_TControl_GSEA_Input_List.csv
-    | -- | -- Examples
-    | -- | -- | -- YourPlot.png
-    | -- | -- | -- YourPlot2.png
-    | -- | -- README.md
-    | -- Create new R file here...
 ```
-
+└── Working_Dir/
+    ├── Ifetroban/
+    │   ├── Code/
+    │   │   └── GSEA_Barcode_Enrichment_Plots.R
+    │   ├── Data/
+    │   │   ├── TIfetroban_vs_TControl_gseGO.rds
+    │   │   ├── TIfetroban_vs_TControl_gseKEGG.rds
+    │   │   ├── Ifetroban_vs_TControl_GSEA_Input_List.csv
+    │   │   └── Examples/
+    │   │       ├── YourPlot.png
+    │   │       └── YourPlot2.png
+    │   └── README.md
+    └── New_R_File.R
+```
 After successful repo cloning, you should have a folder called `Code`, `Data`, 'Examples`, and a 'README.md` file (of which you're reading)
 You should stay in this working directory, and can create a new R file to generate your plots within this working directory and **NOT** within the Ifetroban folder.
 
