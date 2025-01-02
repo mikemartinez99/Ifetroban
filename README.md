@@ -35,7 +35,7 @@ BiocManager::install("org.Rn.eg.db")
 install.packages("ggplot2")
 ```
 
-If prompted to update some/all/or no packages, type `a` to update all packages to allow compatibility.
+If prompted to update some/all/or no packages, type `a` in your RStudio terminal window to update all packages to allow compatibility.
 
 ## Directories
 To use this code, clone this github repository in your working directory (whatever folder your R file is)
