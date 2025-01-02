@@ -1,7 +1,7 @@
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 # The purpose of this code is to enable to generation of GSEA barcode plots.
 #
-# Client: Ryan Beach
+# For: Ryan Beach
 # Lab Affiliation: Rosenberg Lab (UCHC)
 # Date Started: 12/31/24
 # Author: Mike Martinez
