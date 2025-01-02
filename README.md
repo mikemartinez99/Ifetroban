@@ -63,7 +63,7 @@ Included in the repo:
 
 **2.** TIfetroban_vs_TControl_gseKEGG.rds: The KEGG GSEA results
 
-**3.** TIfetroban_vs_TControl_GSEA_Input_List.csv: The gene list used to generate the above results.
+**3.** TIfetroban_vs_TControl_GSEA_Input_List.csv: The master gene list used to generate both results
 
 
 
