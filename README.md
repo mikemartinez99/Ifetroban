@@ -140,7 +140,9 @@ kegg <- readRDS(kegg)
 
 #----- See the data in tabular format
 goData <- as.data.frame(go)
+keggData <- as.data.frame(kegg)
 View(goData)
+View(keggData)
 ```
 
 ## plotESMulti Function
@@ -163,13 +165,14 @@ When saving the plot, you can adjust the `plotName` variable to whatever you wan
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 
 #----- Example usage
-# Replace 'gsea_result' with your actual GSEA rds object (the name of the variable)
-# Replace "GO:0004888" and "GO:0030545" with actual GO terms from your analysis (see the dataframe for the values)
+# First argument should be either go or kegg.
+# Second argument is a vector of term IDs you can extract from the dataframe goData or keggData (need to be comma separated and in quotations)
 example1 <- plotESMulti(go, 
                          c("GO:0004888", "GO:0030545"))
 print(example1)
 
-#----- Save the plot
+
+#----- Save the plot (needs to be in quotations)
 plotName <- "YourPlot.tiff" # CHANGE
 
 ggsave(paste0(opDir, plotName), 
