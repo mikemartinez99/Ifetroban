@@ -53,7 +53,8 @@ git clone https://github.com/mikemartinez99/Ifetroban
 ```
 
 Your directory structure should now be as follows:
-**New_R_File.R is a file you need to create which is where you will call the functions to generate the plots**
+
+**New_R_File.R is a file you need to create which is where you will call the functions to generate the plots. You can name it whatever you'd like!**
 ```
 └── Working_Dir/
     ├── Ifetroban/
