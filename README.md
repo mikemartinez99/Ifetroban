@@ -133,7 +133,7 @@ To implement the `plotESMulti` function, you will need to pass the following:
 
 **2.** A vector of term IDs (you can get these from the dataframe we created above). These need to be encased in `c()` and separated by commas.
 
-When saving the plot, you can adjust the `plotName` variable to whatever you want, just ensure that it is encased in quotations. The ggsave arguments `width` and `height` can be changed to alter the size of the output plot. 
+When saving the plot, you can adjust the `plotName` variable to whatever you want, just ensure that it is encased in quotations. The ggsave arguments `width` and `height` can be changed to alter the size of the output plot. Whatever varibale name you save the function call to you need to change in the `ggsave` command.
 
 
 ```R
@@ -152,7 +152,7 @@ print(example1)
 plotName <- "YourPlot.tiff" # CHANGE
 
 ggsave(paste0(opDir, plotName), 
-       example1,
+       example1, # If you named your variable something else, change this!
        width = 10,
        height = 10,
        dpi = 150)
