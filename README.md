@@ -1,5 +1,6 @@
 # Ifetroban Barcode Plots
-Custom functions that can be leveraged for plotting GSEA results with the popular "Running Enrichment Score" plots (aka, barcode plots).
+Wrapper functions to plot different flavors of running enrichment score plots for gene set enrichment analysis (GSEA) results. Includes plotting of multiple enrichments and single enrichments.
+Furhter customizations can be added/modified by altering functiond definitions in the code directory. 
 
 # Table of Contents
 - [Introduction](#introduction)
