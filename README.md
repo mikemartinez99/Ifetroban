@@ -69,10 +69,11 @@ Included in the repo:
 
 
 # Implementation
-Below is an example script showing how to source and call the wrapper functions, and how to implement them.
-You will need to change the `wd` variable to the path to your working directory, **ensuring that the paths ends with a "/"**
-If you cloned the directory correctly and are in your working directory, you should **only need to change the `wd` varible (ensuring it is encased in quotations) and leave every other path as is**
-You can copy this code directly into your R file to run. You really only need to change the plot names later on!
+You can generate a multi-running enrichment score plot using the `plotESMulti` function, or generate a single running enrichment score plot using the `plotESSingle` function. Below are example usages for both!
+The code below will show you how to source the code and call the functions to generate the plots. You will need to change the `wd` variable below, **ensuring that the path ends with a "/"**
+If you cloned the github correctly and you are in the working directory which holds the Ifetroban repo folder, **you only need to change the `wd` varible, making sure to encase it in quotations, and leave every other path as it is!**
+
+You can copy the code below directly into your R file which should live in your working directory and run it!
 
 ```R
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
@@ -121,6 +122,8 @@ goData <- as.data.frame(go)
 View(goData)
 ```
 
+## plotESMulti Function
+
 We can plot similar terms on a single plot to visualize concordant enrichment profiles with the `plotESMulti` function. Within the function definition in the `code/GSEA_Barcode_Enrichment_Plots.R` folder, you can change the `pvalue_table` argument to `FALSE` if you do not want to plot pvalues and adjusted pvalues next to the term. You can also adjust the `ES_geom` argument to `"dot"` if you prefer a dotted line instead of a solid line. **If you change the function definition, you need to re-run the `source` command above so the functions can update!**
 This function is really useful if you want to show similar pathways or terms which have similar enrichment profiles. 
 
@@ -156,6 +159,8 @@ ggsave(paste0(opDir, plotName),
 ```
 
 ![Example of plotESMulti output](Examples/YourPlot.png)
+
+## plotESSingle Function
 
 We can also plot just a single GO or KEGG term. Below is example usage. This function takes the following arguments:
 
