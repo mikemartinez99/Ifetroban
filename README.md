@@ -146,7 +146,7 @@ View(goData)
 ## plotESMulti Function
 
 We can plot similar terms on a single plot to visualize concordant enrichment profiles with the `plotESMulti` function. Within the function definition in the `code/GSEA_Barcode_Enrichment_Plots.R` folder, you can change the `pvalue_table` argument to `FALSE` if you do not want to plot pvalues and adjusted pvalues next to the term. You can also adjust the `ES_geom` argument to `"dot"` if you prefer a dotted line instead of a solid line. **If you change the function definition, you need to re-run the `source` command above so the functions can update!**
-This function is really useful if you want to show similar pathways or terms which have similar enrichment profiles. 
+This function is really useful if you want to show similar pathways or terms which have similar enrichment profiles. Typically 3-4 terms can fit on a single plot. You could include more but plots might become difficult to read if >5 terms are included. In this case, further customization might be needed to ensure highly differentiable color palettes and font formatting. 
 
 To implement the `plotESMulti` function, you will need to pass the following:
 
