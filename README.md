@@ -157,7 +157,7 @@ ggsave(paste0(opDir, plotName),
        dpi = 150)
 ```
 
-![Example of plotESMulti output](examples/YourPlot.tiff)
+![Example of plotESMulti output](examples/YourPlot.png)
 
 We can also plot just a single GO or KEGG term. Below is example usage. This function takes the following arguments:
 **1.** The Rds object for either GO or KEGG
