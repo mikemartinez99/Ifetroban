@@ -128,9 +128,10 @@ plotESMulti <- function(obj, geneSetIDs) {
 ```
 
 To implement the plotESMulti function, you will need to pass the following:
+
 **1.** The rds object (either go or kegg)
 
-**2.** A vector of term IDs (you can get these from the dataframe we created above). These need to be encased in `c()` and separated by commas
+**2.** A vector of term IDs (you can get these from the dataframe we created above). These need to be encased in `c()` and separated by commas.
 
 When saving the plot, you can adjust the `plotName` variable to whatever you want, just ensure that it is encased in quotations. The ggsave arguments `width` and `height` can be changed to alter the size of the output plot. 
 
