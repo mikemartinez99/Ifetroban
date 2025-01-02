@@ -6,7 +6,6 @@ Custom functions that can be leveraged for plotting GSEA results with the popula
 - [Directories](#directories)
 - [Files](#files)
 - [Implementation](#implementation)
-- [Contact](#contact)
 
 
 ## Introduction
@@ -15,6 +14,7 @@ The wrapper functions include basic plotting parameters that can be easily manip
 Addtionally, the .rds objects for the GO and KEGG enrichment results are included, which enables the direct plotting with the default function `gseaplot2` from the `enrichplot` package.
 
 This code requires the following packages be installed:
+
 **1.** `clusterProfiler`
 
 **2.** `enrichPlot`
@@ -49,10 +49,11 @@ To use this code, clone this github repository in your working directory (whatev
 
 ``` bash
 # Run from within your working directory
-git cline https://github.com/mikemartinez99/Ifetroban
+git clone https://github.com/mikemartinez99/Ifetroban
 ```
 
 After successful repo cloning, you should have a folder called `code`, `data` and a 'README.md` file (of which you're reading)
+You should stay in this working directory, and can create a new R file to generate your plots within this working directory and **NOT** within the Ifetroban folder.
 
 
 # Files
@@ -69,8 +70,9 @@ Included in the repo:
 
 # Implementation
 Below is an example script showing how to source and call the wrapper functions, and how to implement them.
-You will need to change the `wd` variable to the path to your working directory, **ensuring that the path ends with a "/"**
-Additionally, the `plotName` can be changed to whatever you want.
+You will need to change the `wd` variable to the path to your working directory, **ensuring that the paths ends with a "/"**
+If you cloned the directory correctly and are in your working directory, you should **only need to change the `wd` varible (ensuring it is encased in quotations) and leave every other path as is**
+You can copy this code directly into your R file to run. You really only need to change the plot names later on!
 
 ```R
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
@@ -119,27 +121,8 @@ goData <- as.data.frame(go)
 View(goData)
 ```
 
-We can plot similar terms on a single plot to visualize concordant enrichment profiles with the `plotESMulti` function. Within the function definition, you can change the `pvalue_table` argument to `FALSE` if you do not want to plot pvalues and adjusted pvalues next to the term. You can also adjust the `ES_geom` argument to `"dot"` if you prefer a dotted line instead of a solid line.
+We can plot similar terms on a single plot to visualize concordant enrichment profiles with the `plotESMulti` function. Within the function definition in the `code/GSEA_Barcode_Enrichment_Plots.R` folder, you can change the `pvalue_table` argument to `FALSE` if you do not want to plot pvalues and adjusted pvalues next to the term. You can also adjust the `ES_geom` argument to `"dot"` if you prefer a dotted line instead of a solid line. **If you change the function definition, you need to re-run the `source` command above so the functions can update!**
 This function is really useful if you want to show similar pathways or terms which have similar enrichment profiles. 
-```R
-
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
-# plotESMulti Function
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
-
-#----- Function definition to plot multiple GSEA running enrichment scores on one plot
-plotESMulti <- function(obj, geneSetIDs) {
-    # Generate the GSEA plot
-    plot <- gseaplot2(
-      x = obj,
-      geneSetID = geneSetIDs,  # Vector of GO terms
-      subplots = 1:3, # Don't change
-      pvalue_table = TRUE, # Change to FALSE if pvalue table is not wanted
-      ES_geom = "line" # Either "line" or "dot"
-    )
-    return(plot)
-  }
-```
 
 To implement the `plotESMulti` function, you will need to pass the following:
 
@@ -180,23 +163,13 @@ We can also plot just a single GO or KEGG term. Below is example usage. This fun
 
 **2.** The geneset ID encased in quotations
 
-**3.** The title of the term. You can make this whatever you want.
+**3.** The title of the term. You can make this whatever you want. You can set this to `""` if you do not want a plot title. 
+If you change the function definition to not include a pvalue table, the term name will not show up on the plot, and in this case, you can add the term as a title.
 
 ```R
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 # Example usage of plotESSingle
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
-#----- Function definition to plot single GSEA running enrichment score
-plotESSingle <- function(obj, geneSetID, title) {
-  plot <- gseaplot2(
-    x = obj,
-    geneSetID = geneSetID, 
-    title = title, # Vector of GO terms
-    pvalue_table = TRUE, # Change to FALSE if pvalue table is not wanted
-    ES_geom = "line" # Either "line" or "dot"
-  )
-  return(plot)
-}
 
 #----- Example usage
 example2 <- plotESSingle(go,
