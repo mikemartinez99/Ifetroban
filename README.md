@@ -52,7 +52,24 @@ To use this code, clone this github repository in your working directory (whatev
 git clone https://github.com/mikemartinez99/Ifetroban
 ```
 
-After successful repo cloning, you should have a folder called `code`, `data` and a 'README.md` file (of which you're reading)
+Your directory structure should now be as follows:
+```bash
+Working_Dir
+    | -- Ifetroban
+    | -- | -- Code
+    | -- | -- | -- GSEA_Barcode_Enrichment_Plots.R
+    | -- | -- Data
+    | -- | -- | -- TIfetroban_vs_TControl_gseGO.rds
+    | -- | -- | -- TIfetroban_vs_TControl_gseKEGG.rds
+    | -- | -- | -- Ifetroban_vs_TControl_GSEA_Input_List.csv
+    | -- | -- Examples
+    | -- | -- | -- YourPlot.png
+    | -- | -- | -- YourPlot2.png
+    | -- | -- README.md
+    | -- Create new R file here...
+```
+
+After successful repo cloning, you should have a folder called `Code`, `Data`, 'Examples`, and a 'README.md` file (of which you're reading)
 You should stay in this working directory, and can create a new R file to generate your plots within this working directory and **NOT** within the Ifetroban folder.
 
 
