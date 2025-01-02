@@ -35,10 +35,15 @@ BiocManager::install("org.Rn.eg.db")
 install.packages("ggplot2")
 ```
 
+If prompted to update some/all/or no packages, type `a` to update all packages to allow compatibility.
+
 ## Directories
 To use this code, clone this github repository in your working directory (whatever folder your R file is)
+
 **1.** Enter your terminal
+
 **2.** Navigate to your working directory using the `cd` command
+
 **3.** Clone this repository to the working directory using the following code:
 
 
@@ -50,12 +55,21 @@ git clone https://github.com/mikemartinez99/Ifetroban/
 After successful repo cloning, you should have a folder called `code`, `data` and a 'README.txt` file (of which you're reading)
 
 
-## Files
+# Files
+Included in the repo:
+
+**1.** TIfetroban_vs_TControl_gseGO.rds: The GO GSEA results
+
+**2.** TIfetroban_vs_TControl_gseKEGG.rds: The KEGG GSEA results
+
+**3.** TIfetroban_vs_TControl_GSEA_Input_List.csv: The gene list used to generate the above results.
+
+
 
 
 # Implementation
 Below is an example script showing how to source and call the wrapper functions, and how to implement them.
-You will need to change the `wd` variable to the path to your working directory, ensuring that the path ends with a "/"
+You will need to change the `wd` variable to the path to your working directory, **ensuring that the path ends with a "/"**
 Additionally, the `plotName` can be changed to whatever you want.
 
 ```R
@@ -63,29 +77,30 @@ Additionally, the `plotName` can be changed to whatever you want.
 # LOAD LIBRARIES AND SET PATHS
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 
-# Libraries
+#----- Libraries
 library(clusterProfiler)
 library(org.Rn.eg.db)
 library(ggplot2)
 library(enrichplot)
 
-# Set path to working directory
-# Ensure that paths end with a "/" so the paste0 function works correctly
+#----- Set path to working directory
 wd <- "Path/to/your/workingDirectory/"
+
+#----- Set path to source code, input directory, and output path which we will create
 sourceCode <- paste0(wd, "Ifetroban/Code/GSEA_Barcode_Enrichment_Plots.R"
 inputDir <- paste0(wd, "Ifetroban/Data/")
 outputDir <- paste0(wd, "Outputs")
 
-# Data paths
+#----- Data paths
 go <- paste0(inputDir, "TIfetroban_vs_TControl_gseGO.rds")
 kegg <- paste0(inputDir, "TIfetroban_vs_TControl_gseKEGG.rds")
 
-# Generate the output Directory
+#----- Generate the output Directory
 if (!dir.exists(outputDir)) {
     dir.create(outputDir)
 }
 
-# Source the functions
+#----- Source the functions
 source(sourceCode)
 ```
 Now we need to read in the rds file that holds the GO or KEGG data. Once we load in the object, we can also save the results to a dataframe so you can easily parse the terms you want to extract in an excel like format. Once the dataframe is loaded in your environment, you can view it by clicking on it in your environment panel, or by running the `view` command
@@ -95,25 +110,24 @@ Now we need to read in the rds file that holds the GO or KEGG data. Once we load
 # READ IN THE GO OR KEGG DATA
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 
-# Read in the rds file for either go or kegg
+#----- Read in the rds file for either go or kegg
 go <- readRDS(go)
 kegg <- readRDS(kegg)
 
-# See the data in tabular format
+#----- See the data in tabular format
 goData <- as.data.frame(go)
 View(goData)
 ```
 
 We can plot similar terms on a single plot to visualize concordant enrichment profiles with the `plotESMulti` function. Within the function definition, you can change the `pvalue_table` argument to `FALSE` if you do not want to plot pvalues and adjusted pvalues next to the term. You can also adjust the `ES_geom` argument to `"dot"` if you prefer a dotted line instead of a solid line.
+This function is really useful if you want to show similar pathways or terms which have similar enrichment profiles. 
 ```R
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 # plotESMulti Function
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 
-#----- Function to plot multiple GSEA running enrichment scores on one plot
-# This is useful for grouping highly similar terms to visualize concordant 
-# enrichment results
+#----- Function definition to plot multiple GSEA running enrichment scores on one plot
 plotESMulti <- function(obj, geneSetIDs) {
     # Generate the GSEA plot
     plot <- gseaplot2(
@@ -127,7 +141,7 @@ plotESMulti <- function(obj, geneSetIDs) {
   }
 ```
 
-To implement the plotESMulti function, you will need to pass the following:
+To implement the `plotESMulti` function, you will need to pass the following:
 
 **1.** The rds object (either go or kegg)
 
@@ -148,8 +162,9 @@ example1 <- plotESMulti(go,
                          c("GO:0004888", "GO:0030545"))
 print(example1)
 
-# Save the plot
-plotName <- "YourPlot.tiff"
+#----- Save the plot
+plotName <- "YourPlot.tiff" # CHANGE
+
 ggsave(paste0(opDir, plotName), 
        example1,
        width = 10,
@@ -160,6 +175,7 @@ ggsave(paste0(opDir, plotName),
 ![Example of plotESMulti output](Examples/YourPlot.png)
 
 We can also plot just a single GO or KEGG term. Below is example usage. This function takes the following arguments:
+
 **1.** The Rds object for either GO or KEGG
 
 **2.** The geneset ID encased in quotations
@@ -170,9 +186,8 @@ We can also plot just a single GO or KEGG term. Below is example usage. This fun
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 # Example usage of plotESSingle
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
-#----- Function to plot single GSEA running enrichment score
+#----- Function definition to plot single GSEA running enrichment score
 plotESSingle <- function(obj, geneSetID, title) {
-  # Generate the GSEA plot
   plot <- gseaplot2(
     x = obj,
     geneSetID = geneSetID, 
@@ -189,8 +204,8 @@ example2 <- plotESSingle(go,
                           title = "Test Term")
 print(example2)
 
-# Save the plot
-plotName <- "YourPlot2.tiff"
+#----- Save the plot
+plotName <- "YourPlot2.tiff" # CHANGE
 ggsave(paste0(opDir, plotName), 
        example2,
        width = 10,
