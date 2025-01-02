@@ -49,7 +49,10 @@ To use this code, clone this github repository in your working directory (whatev
 
 ``` bash
 # Run from within your working directory
+pwd
+cd /path/to/your/working_dir/
 git clone https://github.com/mikemartinez99/Ifetroban
+ls
 ```
 
 Your directory structure should now be as follows:
